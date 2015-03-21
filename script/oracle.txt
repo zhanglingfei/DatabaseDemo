@@ -1,0 +1,15 @@
+cmd:
+services.msc
+	OracleJobSchedulerORCL
+	OracleOraDb10g_home1TNSListener
+	OracleServiceORCL
+
+PlSQLDeveloper(Oracle Client)
+TOAD
+
+	SYSDBA:
+	sys/system
+
+	Select  username, password from dba_users where username='SCOTT';
+
+	alter user SCOTT identified by tiger;
