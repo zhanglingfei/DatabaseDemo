@@ -2,30 +2,30 @@ select * from cat;--catalog
 
 --student
 create table student(
-       sno   VARCHAR2(10),
-       sname varchar2(20),
-       sex   char(1),
-       birthday date,
-       --address varchar2(100),
-       dno      varchar2(5)--,
+  sno   VARCHAR2(10),
+  sname varchar2(20),
+  sex   char(1),
+  birthday date,
+--address varchar2(100),
+  dno      varchar2(5)--,
 );
 
 create table dep(
-       dno   varchar2(5),
-       dname varchar2(20),
-       tel   varchar2(20)
+  dno   varchar2(5),
+  dname varchar2(20),
+  tel   varchar2(20)
 );
 
 create table course(
-       cno   varchar2(5),
-       cname varchar2(20),
-       credit   number(1)
+  cno   varchar2(5),
+  cname varchar2(20),
+  credit   number(1)
 );
 
 create table sc(
-       sno   varchar2(10),
-       cno   varchar2(5),
-       grade number(3)
+  sno   varchar2(10),
+  cno   varchar2(5),
+  grade number(3)
 );
 
 select * from emp;
@@ -50,3 +50,25 @@ rename to student;
 
 alter table student
 rename column gender to sex;
+
+--主键约束
+
+SELECT * FROM cat;
+
+--student
+create table student(
+  sno   VARCHAR2(10)  CONSTRAINT pk_student_sno PRIMARY KEY ,
+  sname varchar2(20),
+  sex   char(1),
+  birthday date,
+--address varchar2(100),
+  dno      varchar2(5)--,
+);
+
+select * from student;
+
+PURGE RECYCLEBIN ;
+
+INSERT INTO student VALUES (NULL , 'zhangsan', 'm', '1-2月-1995', 'd01');
+
+DROP TABLE student;
