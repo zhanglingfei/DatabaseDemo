@@ -72,3 +72,34 @@ PURGE RECYCLEBIN ;
 INSERT INTO student VALUES (NULL , 'zhangsan', 'm', '1-2月-1995', 'd01');
 
 DROP TABLE student;
+
+
+--外键约束
+
+DROP TABLE student;
+
+create table student(
+  sno   VARCHAR2(10)  CONSTRAINT pk_student_sno PRIMARY KEY ,
+  sname varchar2(20) NOT NULL ,
+  sex   char(1),
+  birthday date,
+--address varchar2(100),
+  dno      varchar2(5) CONSTRAINT fk_student_dno REFERENCES dep(dno) ON DELETE SET NULL -- CASCADE -- Cascading Style Sheet
+);
+
+SELECT * FROM dep;
+SELECT * FROM student;
+
+DELETE FROM dep; -- 删除dep表的所有记录
+
+DROP TABLE dep;
+
+-- 唯一约束
+
+create table dep(
+  dno   varchar2(5) CONSTRAINT pk_dep_dno PRIMARY KEY ,
+  dname varchar2(20) CONSTRAINT un_dep_dname UNIQUE ,
+  tel   varchar2(20)
+);
+
+INSERT INTO dep VALUES ('d02', NULL , '62780001');
