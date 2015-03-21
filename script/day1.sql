@@ -43,7 +43,7 @@ modify (sex char(2));
 alter table student
 drop (address);
 
-insert into student values('s2015001', 'ÕÅÈı', 'ÄĞ', '1-2ÔÂ-1995', 'D01', 'Çå»ª´óÑ§xxx');
+insert into student values('s2015001', 'å¼ ä¸‰', 'ç”·', '1-2æœˆ-1995', 'D01', 'æ¸…åå¤§å­¦xxx');
 
 alter table stu
 rename to student;
