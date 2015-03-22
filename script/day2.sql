@@ -66,3 +66,27 @@ WHERE cno = 'c01'
 DELETE FROM course
 WHERE cno = 'c02'
 ;
+
+--select
+
+SELECT '课程名是：' || cname
+FROM course;
+
+SELECT *
+FROM course;
+
+SELECT *
+FROM course
+WHERE cname IS NOT NULL
+;
+
+SELECT * FROM emp; --employee
+
+SELECT * FROM dept;
+
+SELECT ename, sal*12 年工资, sysdate 日期
+FROM emp
+;
+
+SELECT 20, sin(3.1415926/2)
+from dual; -- dual 系统表
