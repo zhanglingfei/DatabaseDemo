@@ -49,3 +49,20 @@ SELECT *
 FROM user_constraints
 where table_name = 'STUDENT'
 ;
+
+
+--DML
+
+SELECT * FROM course;
+
+INSERT INTO course  VALUES ('c01', 'Java SE', 3); -- Ctrl + D(Duplicate)
+INSERT INTO course(cno)  VALUES ('c02'); -- Ctrl + Y
+
+UPDATE course
+SET credit = credit+1
+WHERE cno = 'c01'
+;
+
+DELETE FROM course
+WHERE cno = 'c02'
+;
