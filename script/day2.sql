@@ -90,3 +90,19 @@ FROM emp
 
 SELECT 20, sin(3.1415926/2)
 from dual; -- dual 系统表
+
+--order by
+
+select *
+from emp
+ORDER BY hiredate
+;
+
+select *
+FROM emp
+ORDER by deptno, hiredate DESC ;
+
+select ename
+from emp
+order by sal
+;
