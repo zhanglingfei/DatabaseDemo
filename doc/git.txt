@@ -1,0 +1,5 @@
+cmd:
+    git_home/bin
+
+        git config --global user.name "your_name"
+        git config --global user.email "username@email.com"
