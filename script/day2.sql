@@ -115,3 +115,99 @@ where e.deptno = d.deptno --连接条件
 ;
 
 select * FROM dept;
+
+
+
+select * from salgrade;
+
+SELECT e.ename, s.grade
+from emp e, salgrade s -- 2
+WHERE e.sal between s.losal and s.hisal
+;
+
+--outer join
+
+select e.ename, d.dname
+from emp e, dept d
+where e.deptno = d.deptno(+)
+;
+
+update emp
+set deptno = null
+where ename='KING'
+;
+
+select e1.ename, e2.ename
+from emp e1, emp e2
+where e1.mgr = e2.empno
+;
+
+SELECT * FROM emp;
+
+--集合运算
+
+select sno
+from sc
+WHERE cno='c01' and cno='c02'
+;
+
+SELECT sno
+FROM sc
+WHERE cno='c01'
+  INTERSECT
+SELECT sno
+FROM sc
+WHERE cno='c02'
+;
+
+SELECT * FROM sc;
+
+SELECT * FROM student;
+
+INSERT into student(sno) VALUES ('s01');
+
+SELECT *
+FROM course;
+
+INSERT INTO sc VALUES ('s01', 'c01', 2);
+INSERT INTO sc VALUES ('s01', 'c02', 3);
+
+select DISTINCT deptno
+from emp;
+
+--统计函数
+
+select sum(sal)
+from emp;
+select min(sal)
+from emp;
+select max(sal)
+from emp;
+select avg(sal)
+from emp;
+select count(deptno) -- king deptno = null
+from emp;
+select count(*) --***
+from emp;
+
+SELECT count(DISTINCT deptno)
+from emp;
+
+-- group by
+SELECT max(hiredate)
+from emp;
+
+SELECT count(*)
+from emp;
+
+SELECT deptno, count(*)
+from emp
+GROUP BY deptno; -- 对dptno分组：dptno值相同的分为一组
+SELECT deptno, avg(sal)
+from emp
+GROUP BY deptno; -- 对dptno分组：dptno值相同的分为一组
+
+
+SELECT deptno, avg(sal), count(ename) --?
+from emp
+GROUP BY deptno;
