@@ -106,3 +106,12 @@ select ename
 from emp
 order by sal
 ;
+
+--连接操作
+
+SELECT e.ename, e.deptno, d.dname
+from emp e, dept d
+where e.deptno = d.deptno --连接条件
+;
+
+select * FROM dept;
