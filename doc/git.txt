@@ -3,7 +3,3 @@ cmd:
 
         git config --global user.name "your_name"
         git config --global user.email "username@email.com"
-
-
-
-        test...
