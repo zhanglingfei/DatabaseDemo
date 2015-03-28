@@ -162,9 +162,21 @@ create or replace trigger t_emp
 before update  or delete or insert
 on emp
   begin
-    if  to_char(sysdate,'dy')='星期六' then
+    if  to_char(sysdate,'dy')='星期日' then
         raise_application_error(-20000, 'you would not update the emp table  on Saturday') ;
      end if ;
   end ;
 
 DELETE FROM emp;
+
+--transaction
+commit;
+
+
+SELECT * FROM emp;
+
+DELETE FROM emp;
+
+ROLLBACK ;
+
+SELECT * FROM emp_test;
