@@ -43,3 +43,37 @@ INSERT INTO emp_test
     SELECT ename, empno FROM emp
 WHERE deptno = 10
 ;
+
+SELECT * FROM emp;
+
+SELECT LEVEL, ename, empno
+FROM emp
+CONNECT BY PRIOR empno = mgr
+START WITH empno = 7839
+;
+
+SELECT lower(ename) FROM emp; -- DQL DML
+
+SELECT substr('character', 0, 5) FROM dual; --?
+
+SELECT round(68.247, -3) FROM dual;
+
+SELECT floor(99.9) FROM dual;
+
+SELECT ceil(99.1) FROM dual;
+
+SELECT sysdate FROM dual;
+SELECT sysdate + 7 FROM dual;
+
+SELECT ename, round(sysdate - hiredate, 0) 天
+FROM emp;
+SELECT ename, round(months_between(sysdate, hiredate), 0) 月
+FROM emp;
+
+SELECT next_day(sysdate, '星期日') FROM dual;
+
+SELECT last_day(sysdate) FROM dual;
+
+SELECT round(sysdate, 'year') FROM dual;
+
+SELECT sysdate - trunc(sysdate) FROM dual;
