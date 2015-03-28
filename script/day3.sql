@@ -77,3 +77,15 @@ SELECT last_day(sysdate) FROM dual;
 SELECT round(sysdate, 'year') FROM dual;
 
 SELECT sysdate - trunc(sysdate) FROM dual;
+
+SELECT *
+FROM emp
+WHERE hiredate < to_date('1985-01-01', 'yyyy-mm-dd');
+
+SELECT  sal + nvl2(comm, comm, 0) FROM emp;
+
+UPDATE emp
+SET comm = nvl2(comm, comm*1.1, null)
+;
+
+SELECT * FROM emp;
