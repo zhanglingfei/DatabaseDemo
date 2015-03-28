@@ -54,7 +54,7 @@ START WITH empno = 7839
 
 SELECT lower(ename) FROM emp; -- DQL DML
 
-SELECT substr('character', 0, 5) FROM dual; --?
+SELECT substr('character', 1, 5) FROM dual; --?
 
 SELECT round(68.247, -3) FROM dual;
 
@@ -89,3 +89,38 @@ SET comm = nvl2(comm, comm*1.1, null)
 ;
 
 SELECT * FROM emp;
+
+--Oracle Objects
+
+SELECT * FROM scott.emp;
+
+SELECT *
+FROM user_constraints
+where lower(table_name) = 'emp'
+;
+
+SELECT  *
+FROM user_indexes
+where lower(table_name) = 'emp'
+;
+
+create index in_emp on emp(ename);
+
+SELECT * FROM user_ind_columns;
+
+--sequence
+CREATE SEQUENCE s_test;
+
+SELECT * FROM cat;
+
+SELECT *
+FROM user_sequences
+;
+
+CREATE TABLE test(
+  id number CONSTRAINT pk_test_id PRIMARY KEY
+);
+
+INSERT into test VALUES (s_test.nextval);
+
+SELECT * FROM test;
