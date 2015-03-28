@@ -124,3 +124,47 @@ CREATE TABLE test(
 INSERT into test VALUES (s_test.nextval);
 
 SELECT * FROM test;
+
+--view
+
+CREATE or REPLACE VIEW v_d10
+  AS
+  SELECT ename, empno, sal
+  FROM emp
+  WHERE deptno = 10
+  WITH READ ONLY
+  ;
+
+--GRANT DCL: grant create view to scott;
+
+SELECT *
+FROM user_views
+;
+
+SELECT * FROM v_d10;
+
+UPDATE v_d10
+SET sal = sal + 100;
+
+SELECT sal FROM emp;
+
+DELETE FROM v_d10
+WHERE lower(ename) = 'king'
+;
+
+DELETE FROM emp
+WHERE lower(ename) = 'king' and detpno = 10
+;
+
+--trigger
+
+create or replace trigger t_emp
+before update  or delete or insert
+on emp
+  begin
+    if  to_char(sysdate,'dy')='星期六' then
+        raise_application_error(-20000, 'you would not update the emp table  on Saturday') ;
+     end if ;
+  end ;
+
+DELETE FROM emp;
