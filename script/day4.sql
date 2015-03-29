@@ -125,3 +125,44 @@ SELECT xingming, xingbie, xueli, zhuanye, jineng
 FROM yingpin, gangweixinxi
 WHERE yingpin.gangweiid = gangweixinxi.id AND gangweixinxi.id = 1
 ;
+
+-- 电子词典
+
+CREATE DATABASE c;
+USE c;
+
+-- words
+CREATE TABLE words (
+  id  INT PRIMARY KEY AUTO_INCREMENT,
+  chinese VARCHAR(200),
+  english VARCHAR(200),
+  properties VARCHAR(20),
+  clause VARCHAR(200)
+);
+
+-- 管理员维护词条
+# add
+INSERT INTO words VALUES (NULL , '春天', 'spring', '名词', 'In the spring , the days are warmer');
+INSERT INTO words VALUES (NULL , '美丽的', 'beautiful', '形容词', 'The Beautiful Horse');
+# update
+UPDATE words set chinese = '', english='', properties = '', clause = '' WHERE id = 1;
+# delete
+DELETE FROM words WHERE id = 1;
+# select
+SELECT * FROM words;
+
+-- 用户查单词
+SELECT *
+FROM words
+WHERE chinese = '春天'
+;
+SELECT *
+FROM words
+WHERE english = 'beautiful'
+;
+
+
+SELECT *
+FROM words
+WHERE chinese = 'spring' OR english = 'spring'
+;
