@@ -63,4 +63,65 @@ FROM apply, activity
 WHERE apply.activityid = activity.id AND activity.id = 1
 ;
 
+-- b 简易招聘网站
 
+CREATE DATABASE b;
+USE b;
+
+-- admin table
+CREATE TABLE admin (
+  id  int PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(20),
+  password VARCHAR(20)
+);
+
+-- 岗位信息
+CREATE TABLE gangweixinxi (
+  id  INT PRIMARY KEY AUTO_INCREMENT,
+  bianhao VARCHAR(20),
+  mingchen VARCHAR(20),
+  zhize VARCHAR(20),
+  yaoqiu VARCHAR(20)
+);
+
+-- 应聘
+CREATE TABLE yingpin (
+  id  INT PRIMARY KEY  AUTO_INCREMENT,
+  xingming  VARCHAR(20),
+  xingbie  VARCHAR(20),
+  xueli  VARCHAR(20),
+  zhuanye  VARCHAR(20),
+  jineng  VARCHAR(20),
+  gangweiid INT
+);
+
+ALTER TABLE yingpin
+ADD FOREIGN KEY (gangweiid)
+  REFERENCES gangweixinxi(id)
+;
+
+# Ctrl + / or Ctrl + Shift + /
+# 管理员维护岗位信息
+# （新加）
+
+SELECT * FROM gangweixinxi;
+
+INSERT INTO gangweixinxi VALUES (NULL , '001', 'Java程序员', 'coding...', '初级'); /*Ctrl + P(arameters)*/
+
+UPDATE gangweixinxi
+SET zhize = '开发'
+WHERE id = 1;
+
+DELETE FROM gangweixinxi
+WHERE id = 1
+;
+
+# 用户填写个人信息
+
+INSERT INTO yingpin VALUES (NULL , 'zhangsan', 'male', 'gaozhong', NULL , 'java', 1);
+
+# 管理员查看某岗位的应聘情况
+SELECT xingming, xingbie, xueli, zhuanye, jineng
+FROM yingpin, gangweixinxi
+WHERE yingpin.gangweiid = gangweixinxi.id AND gangweixinxi.id = 1
+;
