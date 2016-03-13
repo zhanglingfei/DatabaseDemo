@@ -1,10 +1,10 @@
 .idea
 .gradle
 gradle
+build
 
 *.iml
 gradlew
 gradlew.bat
 settings.gradle
 *.~sql
-

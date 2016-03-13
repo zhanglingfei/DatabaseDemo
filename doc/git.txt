@@ -3,3 +3,8 @@ cmd:
 
         git config --global user.name "your_name"
         git config --global user.email "username@email.com"
+
+.gitconfig
+[user]
+    name = your name
+    email = your_email@somesite.com

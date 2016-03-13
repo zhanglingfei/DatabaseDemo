@@ -1,0 +1,29 @@
+1.	upzip to X:\mysql-directory\
+
+2.	MySQL noinstall
+	X:\mysql-directory\my-small.ini
+		[mysqld]
+		default-character-set=utf8
+		default-storage-engine=innodb
+
+3.	CMD
+	X:\mysql-directory\bin
+	mysqld --install mysqlX --defaults-file="X:\mysql-directory\my-XXX.ini"
+
+
+4.	run->services.msc
+	auto
+	
+	or:
+	CMD
+	net start mysqlX
+	net stop mysqlX
+
+5.	delete service
+		SC delete mysqlX
+
+6.	change password
+		bin:
+		mysql -u root -p
+		update mysql.user set password = PASSWORD('your_new_password') where user='root';
+		flush privileges;
